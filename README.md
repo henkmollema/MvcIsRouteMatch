@@ -12,4 +12,22 @@ Uri referrer = Request.UrlReferrer;
 bool match = referrer.IsRouteMatch(controllerName: "Catalog", actionName: "Category");
 ```
 
-The above code creates an internal http request using the `RouteInfo` (todo: link) class. The `InternalHttpContext` class can be used to fetch the route data for the request. We can then match the controller and action values in the `RouteData` object to the specified values.
+The above code creates an internal http request using the [`RouteInfo`](https://github.com/HenkMollema/MvcIsRouteMatch/blob/master/RouteInfo.cs) class. The `InternalHttpContext` class can be used to fetch the route data for the request. We can then match the controller and action values in the `RouteData` object to the specified values.
+
+The [`UriExtensions`](https://github.com/HenkMollema/MvcIsRouteMatch/blob/master/UriExtensions.cs) contains the `IsRouteMatch` method as well as the `GetRouteParameterValue`. This is a bonus method which allows you to fetch additional route parameter values.
+
+For example:
+
+Consider this route:
+
+```csharp
+routes.MapRoute(
+	"Category",
+	"gifts/{categoryName}",
+	new { controller = "Catalog", action = "Category" },
+```
+
+You can fetch the value of `categoryName` this way:
+```csharp
+string categoryName = uri.GetRouteParameterValue(HttpContext`, "categoryName");
+```
