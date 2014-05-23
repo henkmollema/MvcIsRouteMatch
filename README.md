@@ -12,11 +12,11 @@ Uri referrer = Request.UrlReferrer;
 bool match = referrer.IsRouteMatch(httpContext: HttpContext, controllerName: "Catalog", actionName: "Category");
 ```
 
-The above code creates an internal http request using the [`RouteInfo`](https://github.com/HenkMollema/MvcIsRouteMatch/blob/master/RouteInfo.cs) class. The `InternalHttpContext` class can be used to fetch the route data for the request. We can then match the controller and action values in the `RouteData` object to the specified values.
+The above code creates an internal http request using the [`RouteInfo`](https://github.com/HenkMollema/MvcIsRouteMatch/blob/master/src/RouteInfo.cs) class. The `InternalHttpContext` class can be used to fetch the route data for the request. We can then match the controller and action values in the `RouteData` object to the specified values.
 
 I'm assuming you're using this inside a `Controller` class, so the `Request` and `HttpContext` properties are available.
 
-The [`UriExtensions`](https://github.com/HenkMollema/MvcIsRouteMatch/blob/master/UriExtensions.cs) contains the `IsRouteMatch` method as well as the `GetRouteParameterValue`. This is a bonus method which allows you to fetch additional route parameter values.
+The [`UriExtensions`](https://github.com/HenkMollema/MvcIsRouteMatch/blob/master/src/UriExtensions.cs) contains the `IsRouteMatch` method as well as the `GetRouteParameterValue`. This is a bonus method which allows you to fetch additional route parameter values.
 
 For example:
 
