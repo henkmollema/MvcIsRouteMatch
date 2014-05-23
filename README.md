@@ -29,5 +29,5 @@ routes.MapRoute(
 
 You can fetch the value of `categoryName` this way:
 ```csharp
-string categoryName = uri.GetRouteParameterValue(HttpContext`, "categoryName");
+string categoryName = uri.GetRouteParameterValue(HttpContext, "categoryName");
 ```
